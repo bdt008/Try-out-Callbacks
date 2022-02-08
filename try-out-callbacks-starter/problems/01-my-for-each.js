@@ -21,10 +21,24 @@ myForEach(['laika', 'belka'], function (el) {
 console.log(test); // ['LAIKA', 'BELKA']
 *******************************************************************************/
 
-let myForEach = function() {
+// let cb = function (ele, i, array) {
+//     return ele + "is at index" + i
+// }
+
+let myForEach = function(array, cb) {
+    for(let i = 0; i < array.length; i++) {
+        let ele = array[i];
+        cb(ele, i);
+    }
 
 };
 
+myForEach(['a', 'b', 'c'], function (el, i) {
+    console.log(el + ' is at index ' + i);
+}); // prints
+// a is at index 0
+// b is at index 1
+// c is at index 2
 
 
 

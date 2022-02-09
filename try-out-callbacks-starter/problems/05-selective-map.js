@@ -41,11 +41,53 @@ AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
 - What do you expect each callback function to be returning?
 - How many times are you calling each callback function?
 *******************************************************************************/
+//POLYA
+// write a function that takes an array and 2 callbacks
+//create a variable that is equal to a new array
+//loop through every element of my array
+//create a variable that is equal to the single element in isolation
+//create a variable that is equal to the result of passing the element into the first callback
+// do the same for the seccond callback
+//check if my first callback variable is true
+// if so push the result of the second callback into my new array
+// else push the original element into the new array
+//reutnr the new array
 
-let selectiveMap = function() {
+let selectiveMap = function(array, cb1, cb2) {
+    let myResult =[];
+
+    for(let i = 0; i < array.length; i++) {
+        let myElement = array[i];
+        let firstCB = cb1(myElement);
+        let secondCB = cb2(myElement);
+        if(firstCB === true) {
+            myResult.push(secondCB)
+        } else {
+            myResult.push(myElement);
+        }
+    }
+    return myResult;
 
 };
 
+function isEven(n) {
+    return n % 2 === 0;
+}
+
+function isPositive(n) {
+    return n > 0;
+}
+
+function square(n) {
+    return n * n;
+}
+
+function flipSign(n) {
+    return n * -1;
+}
+
+console.log(selectiveMap([8, 5, 10, 4], isEven, square));
+// [ 64, 5, 100, 16 ]
 
 
 

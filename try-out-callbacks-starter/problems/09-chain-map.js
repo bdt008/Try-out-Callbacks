@@ -29,36 +29,35 @@ console.log(chainMap(4, square, half));         // 8
 console.log(chainMap(4, half, square));         // 4
 *******************************************************************************/
 
-let chainMap = function(value, ...cb) {
-    let val = value;
-    for(let i = 0; i < cb.length; i++) {
-        let fun = cb[i];
-        let res = fun(val);
-        val = res;
-    }
-    return val;
+let chainMap = function (value, ...cb) {
+  let val = value;
+  for (let i = 0; i < cb.length; i++) {
+    let fun = cb[i];
+    let res = fun(val);
+    val = res;
+    //now that the value = result you can make the function go through
+    //the result of the first function
+  }
+  return val;
 };
 
-let add5 = function(n) {
-    return n + 5;
+let add5 = function (n) {
+  return n + 5;
 };
 
-let half = function(n) {
-    return n / 2;
+let half = function (n) {
+  return n / 2;
 };
 
-let square = function(n) {
-    return n * n;
+let square = function (n) {
+  return n * n;
 };
 
-console.log(chainMap(25, add5));                // 30
-console.log(chainMap(25, add5, half));          // 15
-console.log(chainMap(25, add5, half, square));  // 225
-console.log(chainMap(4, square, half));         // 8
-console.log(chainMap(4, half, square));         // 4
-
-
-
+console.log(chainMap(25, add5)); // 30
+console.log(chainMap(25, add5, half)); // 15
+console.log(chainMap(25, add5, half, square)); // 225
+console.log(chainMap(4, square, half)); // 8
+console.log(chainMap(4, half, square)); // 4
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 module.exports = chainMap;
